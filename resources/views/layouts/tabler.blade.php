@@ -17,17 +17,17 @@
     <link href="{{ asset('dist/css/demo.min.css') }}" rel="stylesheet" />
 
     <style>
-.page-wrapper {
-    background-color: #c2dfeb; 
-}
+        .page-wrapper {
+        background-color: #c2dfeb; 
+    }
 
 
     .breadcrumb-section {
-background-color: #c2dfeb; 
-}
+    background-color: #c2dfeb; 
+    }
 
         .navbar-nav .nav-link:hover {
-            background-color: #4ca9d1; 
+            background-color: #7cc1df; 
         } 
 
         @import url('https://rsms.me/inter/inter.css');

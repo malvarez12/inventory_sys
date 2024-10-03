@@ -19,7 +19,7 @@
 
                                 <img class="img-account-profile mb-2" src="{{ asset('assets/img/products/default.webp') }}" alt="" id="image-preview" />
 
-                                <div class="small font-italic text-muted mb-2">
+                                <!-- <div class="small font-italic text-muted mb-2">
                                     Formato JPG o PNG no mayor a 2 MB
                                 </div>
 
@@ -30,7 +30,7 @@
                                     name="product_image"
                                     class="form-control @error('product_image') is-invalid @enderror"
                                     onchange="previewImage();"
-                                >
+                                > -->
 
                                 @error('product_image')
                                 <div class="invalid-feedback">

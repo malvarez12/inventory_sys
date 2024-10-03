@@ -18,9 +18,9 @@
 
                                 <img class="img-account-profile mb-2" src="{{ $supplier->photo ? asset('storage/'.$supplier->photo) : asset('assets/img/demo/user-placeholder.svg') }}" alt="" id="image-preview" />
                                 <!-- Profile picture help block -->
-                                <div class="small font-italic text-muted mb-2">Formato JPG o PNG, no mayor a 1 MB</div>
-                                <!-- Profile picture input -->
-                                <input class="form-control form-control-solid mb-2 @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();">
+                                <!-- <div class="small font-italic text-muted mb-2">Formato JPG o PNG, no mayor a 1 MB</div>
+  
+                                <input class="form-control form-control-solid mb-2 @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();"> -->
                                 @error('photo')
                                 <div class="invalid-feedback">
                                     {{ $message }}

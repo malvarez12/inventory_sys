@@ -31,9 +31,9 @@
 
                                 <img class="img-account-profile rounded-circle mb-2" src="{{ asset('assets/img/demo/user-placeholder.svg') }}" alt="" id="image-preview" />
 
-                                <div class="small font-italic text-muted mb-2">Formato JPG o PNG no mayor a 1 MB</div>
+                                <!-- <div class="small font-italic text-muted mb-2">Formato JPG o PNG no mayor a 1 MB</div>
 
-                                <input class="form-control @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();">
+                                <input class="form-control @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();"> -->
 
                                 @error('photo')
                                 <div class="invalid-feedback">
