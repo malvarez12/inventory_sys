@@ -7,7 +7,7 @@
             <div class="card-header">
                 <div>
                     <h3 class="card-title">
-                        {{ __('Editar compra') }}
+                        {{ __('Detalles de compra') }}
                     </h3>
                 </div>
 

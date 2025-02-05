@@ -1,13 +1,11 @@
-<div class="card">
-    <div class="card-header">
-        <div>
-            <h3 class="card-title">
-                {{ __('Ventas') }}
-            </h3>
-        </div>
+<div class="card bg-white shadow-md rounded-lg">
+    <div class="card-header flex items-center justify-between p-4 border-b">
+        <h2 class="text-lg font-semibold text-gray-700">
+            {{ __('Ventas') }}
+        </h2>
 
         <div class="card-actions">
-            <x-action.create route="{{ route('orders.create') }}" />
+            <x-action.create route="{{ route('purchases.create') }}" />
         </div>
     </div>
 
@@ -28,8 +26,7 @@
             <div class="ms-auto text-secondary">
                 Buscar:
                 <div class="ms-2 d-inline-block">
-                    <input type="text" wire:model.live="search" class="form-control form-control-sm"
-                        aria-label="Search invoice">
+                    <input type="text" wire:model.live="search" class="form-control form-control-sm" aria-label="Search invoice">
                 </div>
             </div>
         </div>
@@ -37,76 +34,76 @@
 
     <x-spinner.loading-spinner />
 
-    <div class="table-responsive">
-        <table wire:loading.remove class="table table-bordered card-table table-vcenter text-nowrap datatable">
-            <thead class="thead-light">
+    <div class="table-responsive max-w-7xl mx-auto">
+        <table wire:loading.remove class="min-w-full divide-y divide-gray-200 border border-gray-300">
+            <thead class="bg-gray-50">
                 <tr>
-                    <th class="align-middle text-center w-1">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                         {{ __('No.') }}
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('invoice_no')" href="#" role="button">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('invoice_no')" href="#" class="hover:text-blue-500">
                             {{ __('No. de comprobante') }}
                             @include('inclues._sort-icon', ['field' => 'invoice_no'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('customer_id')" href="#" role="button">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('customer_id')" href="#" class="hover:text-blue-500">
                             {{ __('Cliente') }}
                             @include('inclues._sort-icon', ['field' => 'customer_id'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('order_date')" href="#" role="button">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('order_date')" href="#" class="hover:text-blue-500">
                             {{ __('Fecha') }}
                             @include('inclues._sort-icon', ['field' => 'order_date'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('payment_type')" href="#" role="button">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('payment_type')" href="#" class="hover:text-blue-500">
                             {{ __('Pago') }}
                             @include('inclues._sort-icon', ['field' => 'payment_type'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('total')" href="#" role="button">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('total')" href="#" class="hover:text-blue-500">
                             {{ __('Total') }}
                             @include('inclues._sort-icon', ['field' => 'sub_total'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('order_status')" href="#" role="button">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('order_status')" href="#" class="hover:text-blue-500">
                             {{ __('Estado') }}
                             @include('inclues._sort-icon', ['field' => 'order_status'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
+                    <th class="px-5 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                         {{ __('Acción') }}
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-white divide-y divide-gray-200">
                 @forelse ($orders as $order)
-                    <tr>
-                        <td class="align-middle text-center">
+                    <tr class="hover:bg-gray-100">
+                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
                             {{ $loop->iteration }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
                             {{ $order->invoice_no }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
                             {{ $order->customer->name }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
                             {{ $order->order_date->format('d-m-Y') }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
                             {{ $order->payment_type }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
                             {{ Number::currency($order->sub_total, 'QTZ') }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
                             <x-status dot
                                 color="{{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'green' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'orange' : '') }}"
                                 class="text-uppercase">
@@ -125,7 +122,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="align-middle text-center" colspan="8">
+                        <td colspan="8" class="px-4 py-2 text-center text-gray-500">
                             No se encontraron resultados
                         </td>
                     </tr>
@@ -134,15 +131,14 @@
         </table>
     </div>
 
-    <div class="card-footer d-flex align-items-center">
-        <p class="m-0 text-secondary">
+    <div class="card-footer flex items-center justify-between px-4 py-3">
+        <p class="text-sm text-gray-500">
             Mostrando <span>{{ $orders->firstItem() }}</span> 
             de <span>{{ $orders->lastItem() }}</span> de
             <span>{{ $orders->total() }}</span> registros
         </p>
-
-        <ul class="pagination m-0 ms-auto">
+        <div class="pagination">
             {{ $orders->links() }}
-        </ul>
+        </div>
     </div>
 </div>

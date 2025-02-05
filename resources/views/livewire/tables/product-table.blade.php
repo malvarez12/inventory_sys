@@ -17,10 +17,6 @@
                         <x-icon.plus />
                         {{ __('Crear producto') }}
                     </a>
-                    <!-- <a href="{{ route('products.import.view') }}" class="dropdown-item">
-                        <x-icon.plus />
-                        {{ __('Import Products') }}
-                    </a> -->
                     <a href="{{ route('products.export.store') }}" class="dropdown-item">
                         <x-icon.plus />
                         {{ __('Exportar producto') }}
@@ -56,73 +52,70 @@
 
     <x-spinner.loading-spinner />
 
-    <div class="table-responsive">
-        <table wire:loading.remove class="table table-bordered card-table table-vcenter text-nowrap datatable">
-            <thead class="thead-light">
+    <div class="table-responsive max-w-7xl mx-auto">
+    <table class="min-w-full divide-y divide-gray-200 border border-gray-300">
+            <thead class="bg-gray-50">
                 <tr>
-                    <th class="align-middle text-center w-1">
+                    <th class="px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                         {{ __('No.') }}
                     </th>
-                    <th scope="col" class="align-middle text-center">
+                    <th class="px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                         {{ __('Foto') }}
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('name')" href="#" role="button">
+                    <th class="px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('name')" href="#" class="hover:text-blue-500">
                             {{ __('Nombre') }}
                             @include('inclues._sort-icon', ['field' => 'name'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('code')" href="#" role="button">
+                    <th class="px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('code')" href="#" class="hover:text-blue-500">
                             {{ __('Código') }}
                             @include('inclues._sort-icon', ['field' => 'code'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('category_id')" href="#" role="button">
+                    <th class="px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('category_id')" href="#" class="hover:text-blue-500">
                             {{ __('Categoría') }}
                             @include('inclues._sort-icon', ['field' => 'category_id'])
                         </a>
                     </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('quantity')" href="#" role="button">
+                    <th class="px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                        <a wire:click.prevent="sortBy('quantity')" href="#" class="hover:text-blue-500">
                             {{ __('Cantidad de stock') }}
                             @include('inclues._sort-icon', ['field' => 'quantity'])
                         </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center">
+                        </th>
+                    <th class="px-5 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                         {{ __('Acción') }}
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-white divide-y divide-gray-200">
                 @forelse ($products as $product)
-                    <tr>
-                        <td class="align-middle text-center">
+                    <tr class="hover:bg-gray-100">
+                        <td class="px-5 py-3 text-sm text-gray-500 text-center">
                             {{ $loop->iteration }}
                         </td>
-                        <td class="align-middle text-center">
-                            <img style="width: 90px;"
-                                src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('assets/img/products/default.webp') }}"
-                                alt="">
+                        <td class="px-5 py-3 text-sm text-gray-500 text-center">
+                            <img style="width: 90px;" src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('assets/img/products/default.webp') }}" alt="">
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-3 text-sm text-gray-500 text-center">
                             {{ $product->name }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-3 text-sm text-gray-500 text-center">
                             {{ $product->code }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-3 text-sm text-gray-500 text-center">
                             {{ $product->category ? $product->category->name : '--' }}
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="px-5 py-3 text-sm text-gray-500 text-center">
                             {{ $product->quantity }}
                         </td>
-                        <td class="align-middle text-center" style="width: 10%">
+                        <td class="px-5 py-3 text-sm text-gray-500 text-center">
                             <x-button.show class="btn-icon" route="{{ route('products.show', $product->uuid) }}" />
                             <x-button.edit class="btn-icon" route="{{ route('products.edit', $product->uuid) }}" />
-                            <x-button.delete class="btn-icon" route="{{ route('products.destroy', $product->uuid) }}"
-                                onclick="return confirm('Estás seguro de eliminar {{ $product->name }}?')" />
+                            <x-button.delete class="btn-icon" route="{{ route('products.destroy', $product->uuid) }}" onclick="return confirm('Estás seguro de eliminar {{ $product->name }}?')" />
                         </td>
                     </tr>
                 @empty

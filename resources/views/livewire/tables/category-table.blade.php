@@ -1,10 +1,8 @@
-<div class="card">
-    <div class="card-header">
-        <div>
-            <h3 class="card-title">
-                {{ __('Categorías') }}
-            </h3>
-        </div>
+<div class="card bg-white shadow-md rounded-lg">
+    <div class="card-header flex items-center justify-between p-4 border-b">
+        <h2 class="text-lg font-semibold text-gray-700">
+            {{ __('Categorías') }}
+        </h2>
 
         <div class="card-actions">
             <x-action.create route="{{ route('categories.create') }}" />
@@ -37,43 +35,43 @@
 
     <x-spinner.loading-spinner />
 
-    <div class="table-responsive">
-        <table wire:loading.remove class="table table-bordered card-table table-vcenter text-nowrap datatable">
-            <thead class="thead-light">
-                <tr>
-                    <th class="align-middle text-center w-1">
-                        {{ __('ID') }}
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('name')" href="#" role="button">
-                            {{ __('Nombre') }}
-                            @include('inclues._sort-icon', ['field' => 'name'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center d-none d-sm-table-cell">
-                        <a wire:click.prevent="sortBy('slug')" href="#" role="button">
-                            {{ __('Slug') }}
-                            @include('inclues._sort-icon', ['field' => 'slug'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center d-none d-sm-table-cell">
-                        <a wire:click.prevent="sortBy('slug')" href="#" role="button">
-                            {{ __('Cantidad de productos') }}
-                            @include('inclues._sort-icon', ['field' => 'products'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center d-none d-sm-table-cell">
-                        <a wire:click.prevent="sortBy('created_at')" href="#" role="button">
-                            {{ __('Fecha de creado') }}
-                            @include('inclues._sort-icon', ['field' => 'created_at'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        {{ __('Acción') }}
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
+    <div class="table-responsive max-w-7xl mx-auto">
+    <table wire:loading.remove class="min-w-full divide-y divide-gray-200 border border-gray-300">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center w-1">
+                    {{ __('ID') }}
+                </th>
+                <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    <a wire:click.prevent="sortBy('name')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Nombre') }}
+                        @include('inclues._sort-icon', ['field' => 'name'])
+                    </a>
+                </th>
+                <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center d-none d-sm-table-cell">
+                    <a wire:click.prevent="sortBy('slug')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Slug') }}
+                        @include('inclues._sort-icon', ['field' => 'slug'])
+                    </a>
+                </th>
+                <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center d-none d-sm-table-cell">
+                    <a wire:click.prevent="sortBy('products')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Cantidad de productos') }}
+                        @include('inclues._sort-icon', ['field' => 'products'])
+                    </a>
+                </th>
+                <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center d-none d-sm-table-cell">
+                    <a wire:click.prevent="sortBy('created_at')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Fecha de creado') }}
+                        @include('inclues._sort-icon', ['field' => 'created_at'])
+                    </a>
+                </th>
+                <th class="px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    {{ __('Acción') }}
+                </th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
                 @forelse ($categories as $category)
                     <tr>
                         <td class="align-middle text-center" style="width: 10%">

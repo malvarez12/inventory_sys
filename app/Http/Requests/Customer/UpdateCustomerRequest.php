@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCustomerRequest extends FormRequest
 {
+    
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -41,7 +42,7 @@ class UpdateCustomerRequest extends FormRequest
             'phone' => [
                 'required',
                 'string',
-                'max:25'
+                'max:15'
             ],
             'account_holder' => [
                 'max:50'

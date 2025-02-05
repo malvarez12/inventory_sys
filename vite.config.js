@@ -5,12 +5,12 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: ['resources/css/app.css', 'resources/css/styles.css', 'resources/js/app.js'],
             refresh: true,
         }),
         viteStaticCopy({
             targets: [
-                // Styles
+                // Styles (Tabler CSS)
                 {
                     src: [
                         'node_modules/@tabler/core/dist/css/tabler.min.css',
@@ -22,7 +22,7 @@ export default defineConfig({
                     ],
                     dest: '../dist/css'
                 },
-                // Scripts
+                // Scripts (Tabler JS)
                 {
                     src: [
                         'node_modules/@tabler/core/dist/js/demo-theme.min.js',
@@ -31,15 +31,20 @@ export default defineConfig({
                     ],
                     dest: '../dist/js'
                 },
-                // libraries
+                // Libraries
                 {
                     src: 'node_modules/@tabler/core/dist/libs/*',
                     dest: '../dist/libs'
                 },
-                // Images
+                // Fonts (your custom fonts)
                 {
-                    src: 'node_modules/@tabler/core/dist/img/*',
-                    dest: '../dist/img'
+                    src: 'resources/fonts/metropolis/*', // Ruta actualizada para tus fuentes
+                    dest: '../dist/fonts/metropolis'
+                },
+                // Images (your custom images)
+                {
+                    src: 'resources/img/backgrounds/*', // Ruta actualizada para tus imágenes
+                    dest: '../dist/img/backgrounds'
                 },
             ]
         })

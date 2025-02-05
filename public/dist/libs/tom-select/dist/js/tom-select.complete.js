@@ -952,7 +952,7 @@
 
 	/**
 	 * sifter.js
-	 * Copyright (c) 2013–2024 Brian Reavis & contributors
+	 * Copyright (c) 2013–2020 Brian Reavis & contributors
 	 *
 	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 	 * file except in compliance with the License. You may obtain a copy of the License at:
@@ -2409,7 +2409,7 @@
 	        return '<div class="create">Add <strong>' + escape(data.input) + '</strong>&hellip;</div>';
 	      },
 	      'no_results': () => {
-	        return '<div class="no-results">No se encontraron resultados</div>';
+	        return '<div class="no-results">No results found</div>';
 	      },
 	      'loading': () => {
 	        return '<div class="spinner"></div>';

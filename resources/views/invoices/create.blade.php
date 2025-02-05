@@ -158,9 +158,9 @@
 
                                         <select class="form-control @error('payment_type') is-invalid @enderror" id="payment_type" name="payment_type">
                                             <option selected="" disabled="">Elige tipo de pago:</option>
-                                            <option value="Efectivo">Pago en efectivo</option>
+                                            <option value="Efectivo">Efectivo</option>
                                             <!-- <option value="Cheque">Cheque</option> -->
-                                            <option value="Adeudado">Pago de saldo adeudado</option>
+                                            <option value="Adeudado">Banco</option>
                                         </select>
 
                                         @error('payment_type')

@@ -34,6 +34,11 @@ class Product extends Model
         "uuid"
     ];
 
+
+    //
+
+
+
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',

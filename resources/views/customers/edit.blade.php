@@ -34,10 +34,10 @@
                                         src="{{ $customer->photo ? asset('storage/' . $customer->photo) : asset('assets/img/demo/user-placeholder.svg') }}"
                                         alt="" id="image-preview" />
 
-                                    <div class="small font-italic text-muted mb-2">Formato JPG o PNG no mayor a 2 MB</div>
+                                    <!-- <div class="small font-italic text-muted mb-2">Formato JPG o PNG no mayor a 2 MB</div>
 
                                     <input class="form-control @error('photo') is-invalid @enderror" type="file"
-                                        id="image" name="photo" accept="image/*" onchange="previewImage();">
+                                        id="image" name="photo" accept="image/*" onchange="previewImage();"> -->
 
                                     @error('photo')
                                         <div class="invalid-feedback">
@@ -57,7 +57,7 @@
 
                                     <div class="row row-cards">
                                         <div class="col-md-12">
-                                            <x-input name="Nombre" :value="old('name', $customer->name)" :required="true" />
+                                            <x-input label="Nombre" name="name" :value="old('name', $customer->name)" :required="true" />
 
                                             <x-input label="Correo electrónico" name="email" :value="old('email', $customer->email)"
                                                 :required="true" />
@@ -70,26 +70,23 @@
 
                                         <div class="col-sm-6 col-md-6">
                                             <label for="bank_name" class="form-label">
-                                                {{ __('Nombre del banco') }}
+                                                {{ __('Medio de pago') }}
                                             </label>
 
                                             <select class="form-select @error('bank_name') is-invalid @enderror"
                                                 id="bank_name" name="bank_name">
-                                                <option selected="" disabled>Elige un banco:</option>
-                                                <option value="BRI"
-                                                    @if (old('bank_name', $customer->bank_name) == 'BRI') selected="selected" @endif>BRI
+                                                <option selected="" disabled>Elige medio de pago:</option>
+                                                <option value="Efectivo"
+                                                    @if (old('bank_name', $customer->bank_name) == 'Efectivo') selected="selected" @endif>Efectivo
                                                 </option>
-                                                <option value="BNI"
-                                                    @if (old('bank_name', $customer->bank_name) == 'BNI') selected="selected" @endif>BNI
+                                                <option value="BAC"
+                                                    @if (old('bank_name', $customer->bank_name) == 'BAC') selected="selected" @endif>BAC
                                                 </option>
-                                                <option value="BCA"
-                                                    @if (old('bank_name', $customer->bank_name) == 'BCA') selected="selected" @endif>BCA
+                                                <option value="Industrial"
+                                                    @if (old('bank_name', $customer->bank_name) == 'Industrial') selected="selected" @endif>Industrial
                                                 </option>
-                                                <option value="BSI"
-                                                    @if (old('bank_name', $customer->bank_name) == 'BSI') selected="selected" @endif>BSI
-                                                </option>
-                                                <option value="Mandiri"
-                                                    @if (old('bank_name', $customer->bank_name) == 'Mandiri') selected="selected" @endif>Mandiri
+                                                <option value="Banrural"
+                                                    @if (old('bank_name', $customer->bank_name) == 'Banrural') selected="selected" @endif>Banrural
                                                 </option>
                                             </select>
 
@@ -100,14 +97,22 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-sm-6 col-md-6">
+                                        <!-- <div class="col-sm-6 col-md-6">
                                             <x-input label="Nombre del titular" name="account_holder" :value="old('account_holder', $customer->account_holder)"
                                                 :required="true" />
-                                        </div>
+                                        </div> -->
 
                                         <div class="col-sm-6 col-md-6">
+                                            <x-input label="Nombre del titular" name="account_holder" :value="old('account_holder', $customer->account_holder)" />
+                                        </div>
+
+                                        <!-- <div class="col-sm-6 col-md-6">
                                             <x-input label="No. de cuenta" name="account_number" :value="old('account_number', $customer->account_number)"
                                                 :required="true" />
+                                        </div> -->
+
+                                        <div class="col-sm-6 col-md-6">
+                                            <x-input label="No. de cuenta" name="account_number" :value="old('account_number', $customer->account_number)" />
                                         </div>
 
                                         <div class="col-md-12">

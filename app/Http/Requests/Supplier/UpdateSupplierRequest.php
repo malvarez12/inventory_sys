@@ -41,12 +41,12 @@ class UpdateSupplierRequest extends FormRequest
             'phone' => [
                 'required',
                 'string',
-                'max:25'
+                'max:10'
             ],
             'shopname' => [
                 'required',
                 'string',
-                'max:50'
+                'max:60'
             ],
             'type' => [
                 'required',

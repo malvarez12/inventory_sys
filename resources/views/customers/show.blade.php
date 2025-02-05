@@ -70,7 +70,7 @@
                                         <td>{{ $customer->account_number }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Nombre del banco</td>
+                                        <td>Medio de pago</td>
                                         <td>{{ $customer->bank_name }}</td>
                                     </tr>
                                     </tbody>

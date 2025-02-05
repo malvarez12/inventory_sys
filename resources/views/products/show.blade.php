@@ -23,12 +23,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">
-                                    {{ __('Foto del producto') }}
+                                    {{ __('Foto') }}
                                 </h3>
 
-                                <img style="width: 90px;" id="image-preview"
+                                <img style="width: 120px;" id="image-preview"
                                     src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('assets/img/products/default.webp') }}"
                                     alt="" class="img-account-profile mb-2">
+
                             </div>
                         </div>
                     </div>
@@ -87,10 +88,10 @@
                                             <td><span class="text-secondary">Código</span></td>
                                             <td>{{ $product->code }}</td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>Código de barras</td>
                                             <td>{!! $barcode !!}</td>
-                                        </tr>
+                                        </tr> -->
                                         <tr>
                                             <td>Categoría</td>
                                             <td>

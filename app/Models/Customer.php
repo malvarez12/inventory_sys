@@ -33,22 +33,27 @@ class Customer extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class);
-    }
-
-    public function quotations(): HasMany
-    {
-        return $this->HasMany(Quotation::class);
-    }
-
-    public function scopeSearch($query, $value): void
-    {
-        $query->where('name', 'like', "%{$value}%")
-            ->orWhere('email', 'like', "%{$value}%")
-            ->orWhere('phone', 'like', "%{$value}%");
-    }
+     // Relación de uno a muchos: Un cliente puede tener muchos pedidos (orders)
+     public function orders(): HasMany
+     {
+         return $this->hasMany(Order::class);
+     }
+ 
+     //Un cliente puede tener muchas cotizaciones (quotations)
+     public function quotations(): HasMany
+     {
+         return $this->hasMany(Quotation::class);
+     }
+ 
+     // Scope local para buscar clientes por nombre, correo electrónico o teléfono
+     public function scopeSearch($query, $value): void
+     {
+         // Añade condiciones de búsqueda con LIKE para coincidencias parciales
+         $query->where('name', 'like', "%{$value}%")
+             ->orWhere('email', 'like', "%{$value}%")
+             ->orWhere('phone', 'like', "%{$value}%");
+     }
+ 
      /**
      * Get the user that owns the Category
      *

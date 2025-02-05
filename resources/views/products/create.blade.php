@@ -14,7 +14,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">
-                                    {{ __('Foto de producto') }}
+                                    {{ __('Descripción') }}
                                 </h3>
 
                                 <img class="img-account-profile mb-2" src="{{ asset('assets/img/products/default.webp') }}" alt="" id="image-preview" />

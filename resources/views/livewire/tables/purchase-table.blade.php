@@ -1,10 +1,8 @@
-<div class="card">
-    <div class="card-header">
-        <div>
-            <h3 class="card-title">
-                {{ __('Compras') }}
-            </h3>
-        </div>
+<div class="card bg-white shadow-md rounded-lg">
+<div class="card-header flex items-center justify-between p-4 border-b">
+        <h2 class="text-lg font-semibold text-gray-700">
+            {{ __('Compras') }}
+        </h2>
 
         <div class="card-actions">
             <x-action.create route="{{ route('purchases.create') }}" />
@@ -36,49 +34,46 @@
 
     <x-spinner.loading-spinner/>
 
-    <div class="table-responsive">
-        <table wire:loading.remove class="table table-bordered card-table table-vcenter text-nowrap datatable">
-            <thead class="thead-light">
-                <tr>
-                    <th class="align-middle text-center w-1">
-                        {{ __('No.') }}
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('purchase_no')" href="#" role="button">
-                            {{ __('No. de compra') }}
-                            @include('inclues._sort-icon', ['field' => 'purchase_no'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('supplier_id')" href="#" role="button">
-                            {{ __('Proveedor') }}
-                            @include('inclues._sort-icon', ['field' => 'supplier_id'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('date')" href="#" role="button">
-                            {{ __('Fecha') }}
-                            @include('inclues._sort-icon', ['field' => 'date'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('total_amount')" href="#" role="button">
-                            {{ __('Total') }}
-                            @include('inclues._sort-icon', ['field' => 'total_amount'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('status')" href="#" role="button">
-                            {{ __('Estado') }}
-                            @include('inclues._sort-icon', ['field' => 'status'])
-                        </a>
-                    </th>
-                    <th scope="col" class="align-middle text-center">
-                        {{ __('Acción') }}
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
+    <div class="table-responsive max-w-7xl mx-auto">
+    <table class="min-w-full divide-y divide-gray-200 border border-gray-300">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">{{ __('No.') }}</th>
+                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    <a wire:click.prevent="sortBy('purchase_no')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('No. de compra') }}
+                        @include('inclues._sort-icon', ['field' => 'purchase_no'])
+                    </a>
+                </th>
+                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    <a wire:click.prevent="sortBy('supplier_id')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Proveedor') }}
+                        @include('inclues._sort-icon', ['field' => 'supplier_id'])
+                    </a>
+                </th>
+                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    <a wire:click.prevent="sortBy('date')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Fecha') }}
+                        @include('inclues._sort-icon', ['field' => 'date'])
+                    </a>
+                </th>
+                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    <a wire:click.prevent="sortBy('total_amount')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Total') }}
+                        @include('inclues._sort-icon', ['field' => 'total_amount'])
+                    </a>
+                </th>
+                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    <a wire:click.prevent="sortBy('status')" href="#" role="button" class="hover:text-blue-500">
+                        {{ __('Estado') }}
+                        @include('inclues._sort-icon', ['field' => 'status'])
+                    </a>
+                </th>
+                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    {{ __('Acción') }}
+                </th>
+            </tr>
+        </thead>
             @forelse ($purchases as $purchase)
                 <tr>
                     <td class="align-middle text-center">

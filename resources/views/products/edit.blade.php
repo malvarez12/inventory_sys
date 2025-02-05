@@ -28,7 +28,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h3 class="card-title">
-                                        {{ __('Foto de producto') }}
+                                        {{ __('Foto') }}
                                     </h3>
 
                                     <img class="img-account-profile mb-2"
@@ -177,7 +177,7 @@
                                         <div class="col-sm-6 col-md-6">
                                             <div class="mb-3">
                                                 <label for="quantity" class="form-label">
-                                                    {{ __(' de stock') }}
+                                                    {{ __('Cantidad de stock') }}
                                                 </label>
 
                                                 <input class="form-control" name="quantity" type="text" readonly value="{{ old('quantity', $product->quantity) }}"  required="true" aria-required="true" style="color: var(--tblr-secondary);background-color: var(--tblr-bg-surface-secondary); opacity: 1;"/>
@@ -192,15 +192,15 @@
 
                                         <div class="col-sm-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="quantity_alert" class="form-label">
+                                                <!-- <label for="quantity_alert" class="form-label">
                                                     {{ __('Alerta de cantidad de stock') }}
                                                     <span class="text-danger">*</span>
-                                                </label>
+                                                </label> -->
 
-                                                <input type="number" id="quantity_alert" name="quantity_alert"
+                                                <!-- <input type="number" id="quantity_alert" name="quantity_alert"
                                                     class="form-control @error('quantity_alert') is-invalid @enderror"
                                                     min="0" placeholder="0"
-                                                    value="{{ old('quantity_alert', $product->quantity_alert) }}">
+                                                    value="{{ old('quantity_alert', $product->quantity_alert) }}"> -->
 
                                                 @error('quantity_alert')
                                                     <div class="invalid-feedback">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
+use Illuminate\Support\Facades\Storage; 
 use Str;
 
 class CustomerController extends Controller
@@ -32,6 +33,7 @@ class CustomerController extends Controller
         if ($request->hasFile('photo')) {
             $image = $request->file('photo')->store('customers', 'public');
         }
+        
         Customer::create([
             'user_id' => auth()->id(),
             'uuid' => Str::uuid(),
@@ -46,8 +48,6 @@ class CustomerController extends Controller
             'bank_name' => $request->bank_name,
             'address' => $request->address,
         ]);
-
-
 
         return redirect()
             ->route('customers.index')
@@ -81,12 +81,15 @@ class CustomerController extends Controller
          */
         $image = $customer->photo;
         if ($request->hasFile('photo')) {
-            if ($customer->photo) {
-                unlink(public_path('storage/') . $customer->photo);
+            // Si ya existe una foto previa, la eliminamos
+            if ($customer->photo && Storage::disk('public')->exists($customer->photo)) {
+                Storage::disk('public')->delete($customer->photo);
             }
+            // Guardamos la nueva imagen
             $image = $request->file('photo')->store('customers', 'public');
         }
 
+        // Actualizamos el cliente con los nuevos datos
         $customer->update([
             'photo' => $image,
             'name' => $request->name,
@@ -108,10 +111,12 @@ class CustomerController extends Controller
     public function destroy($uuid)
     {
         $customer = Customer::where('uuid', $uuid)->firstOrFail();
-        if ($customer->photo) {
-            unlink(public_path('storage/') . $customer->photo);
+        // Si hay una foto, la eliminamos
+        if ($customer->photo && Storage::disk('public')->exists($customer->photo)) {
+            Storage::disk('public')->delete($customer->photo);
         }
 
+        // Eliminamos el cliente
         $customer->delete();
 
         return redirect()

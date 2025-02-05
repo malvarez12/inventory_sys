@@ -20,25 +20,34 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Str;
 
+// Controlador para gestionar órdenes
 class OrderController extends Controller
 {
+    // Muestra un resumen de las órdenes
     public function index()
     {
+        // Cuenta las órdenes del usuario autenticado
         $orders = Order::where('user_id', auth()->id())->count();
 
+        // Devuelve la vista con las órdenes
         return view('orders.index', [
             'orders' => $orders
         ]);
     }
 
+    // Muestra el formulario para crear una nueva orden
     public function create()
     {
+        // Obtiene los productos del usuario autenticado con relaciones de categoría y unidad
         $products = Product::where('user_id', auth()->id())->with(['category', 'unit'])->get();
 
+        // Obtiene los clientes del usuario autenticado
         $customers = Customer::where('user_id', auth()->id())->get(['id', 'name']);
 
+        // Obtiene los productos en el carrito
         $carts = Cart::content();
 
+        // Devuelve la vista con los datos necesarios
         return view('orders.create', [
             'products' => $products,
             'customers' => $customers,
@@ -46,8 +55,10 @@ class OrderController extends Controller
         ]);
     }
 
+    // Guarda una nueva orden en la base de datos
     public function store(OrderStoreRequest $request)
     {
+        // Crea la orden con los datos proporcionados
         $order = Order::create([
             'customer_id' => $request->customer_id,
             'payment_type' => $request->payment_type,
@@ -69,7 +80,7 @@ class OrderController extends Controller
             'uuid' => Str::uuid(),
         ]);
 
-        // Create Order Details
+        // Crea los detalles de la orden
         $contents = Cart::content();
         $oDetails = [];
 
@@ -84,16 +95,19 @@ class OrderController extends Controller
             OrderDetails::insert($oDetails);
         }
 
-        // Delete Cart Sopping History
+        // Limpia el carrito de compras
         Cart::destroy();
 
+        // Redirige a la lista de órdenes con un mensaje de éxito
         return redirect()
             ->route('orders.index')
             ->with('success', 'Venta creada!');
     }
 
+    // Muestra una orden específica
     public function show($uuid)
     {
+        // Obtiene la orden por su UUID y carga relaciones faltantes
         $order = Order::where('uuid', $uuid)->firstOrFail();
         $order->loadMissing(['customer', 'details'])->get();
         return view('orders.show', [
@@ -101,14 +115,13 @@ class OrderController extends Controller
         ]);
     }
 
+    // Actualiza una orden
     public function update($uuid, Request $request)
     {
         $order = Order::where('uuid', $uuid)->firstOrFail();
-        // TODO refactoring
 
-        // Reduce the stock
+        // Reduce el stock de los productos asociados a la orden
         $products = OrderDetails::where('order_id', $order->id)->get();
-
         $stockAlertProducts = [];
 
         foreach ($products as $product) {
@@ -120,13 +133,16 @@ class OrderController extends Controller
             $productEntity->update(['quantity' => $newQty]);
         }
 
+        // Envía alertas de stock bajo si corresponde
         if (count($stockAlertProducts) > 0) {
             $listAdmin = [];
             foreach (User::all('email') as $admin) {
-                $listAdmin [] = $admin->email;
+                $listAdmin[] = $admin->email;
             }
             Mail::to($listAdmin)->send(new StockAlert($stockAlertProducts));
         }
+
+        // Actualiza el estado de la orden
         $order->update([
             'order_status' => OrderStatus::COMPLETE,
             'due' => '0',
@@ -138,34 +154,30 @@ class OrderController extends Controller
             ->with('success', 'Venta completada!');
     }
 
+    // Elimina una orden
     public function destroy($uuid)
     {
         $order = Order::where('uuid', $uuid)->firstOrFail();
         $order->delete();
     }
 
+    // Descarga una factura en PDF (vista para imprimir)
     public function downloadInvoice($uuid)
     {
         $order = Order::with(['customer', 'details'])->where('uuid', $uuid)->firstOrFail();
-        // TODO: Need refactor
-        //dd($order);
-
-        //$order = Order::with('customer')->where('id', $order_id)->first();
-        // $order = Order::
-        //     ->where('id', $order)
-        //     ->first();
 
         return view('orders.print-invoice', [
             'order' => $order,
         ]);
     }
 
+    // Cancela una orden
     public function cancel(Order $order)
     {
         $order->update([
-            'order_status' => 2
+            'order_status' => 2 // Cambia el estado a "cancelado".
         ]);
-        $orders = Order::where('user_id',auth()->id())->count();
+        $orders = Order::where('user_id', auth()->id())->count();
 
         return redirect()
             ->route('orders.index', [

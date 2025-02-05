@@ -1,6 +1,7 @@
 @extends('layouts.tabler')
 
 @section('content')
+
     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
         <div class="container-xl px-4">
             <div class="page-header-content">
@@ -26,29 +27,7 @@
         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('patch')
-            <div class="row">
-                <div class="col-xl-4">
-                    <!-- Profile picture card -->
-                    <div class="card mb-4 mb-xl-0">
-                        <div class="card-header">Foto de perfil</div>
-                        <div class="card-body text-center">
-                            <!-- Profile picture image -->
-                            <img class="img-account-profile rounded-circle mb-2"
-                                src="{{ $user->photo ? asset('storage/profile//' . $user->photo) : asset('assets/img/illustrations/profiles/profile-1.png') }}"
-                                alt="" id="image-preview" />
-                            <!-- Profile picture help block -->
-                            <div class="small font-italic text-muted mb-2"> Formato JPG o PNG, no mayor a 1MB</div>
-                            <!-- Profile picture input -->
-                            <input class="form-control form-control-solid mb-2 @error('photo') is-invalid @enderror"
-                                type="file" id="image" name="photo" accept="image/*" onchange="previewImage();">
-                            @error('photo')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="col-xl-8">
                     <!-- Account details card -->

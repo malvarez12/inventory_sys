@@ -64,16 +64,15 @@
 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="bank_name" class="form-label">
-                                            Nombre del banco
+                                            Medio de pago
                                         </label>
 
                                         <select class="form-select form-control-solid @error('bank_name') is-invalid @enderror" id="bank_name" name="bank_name">
-                                            <option selected="" disabled="">Elige un banco:</option>
+                                            <option selected="" disabled="">Elige medio de pago:</option>
+                                            <option value="Efectivo" @if(old('bank_name') == 'Efectivo')selected="selected"@endif>Efectivo</option>
                                             <option value="BAC" @if(old('bank_name') == 'BAC')selected="selected"@endif>BAC</option>
                                             <option value="Industrial" @if(old('bank_name') == 'Industrial')selected="selected"@endif>Industrial</option>
-                                            <option value="Promerica" @if(old('bank_name') == 'Promerica')selected="selected"@endif>Promerica</option>
                                             <option value="Banrural" @if(old('bank_name') == 'Banrural')selected="selected"@endif>Banrural</option>
-                                            <option value="AZTECA" @if(old('bank_name') == 'Azteca')selected="selected"@endif>Azteca</option>
                                         </select>
 
                                         @error('bank_name')

@@ -8,37 +8,43 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Gestión de Inventario</title>
-    <!-- {{ config('app.name') }} -->
-    <!-- CSS files -->
+
+
+    <link rel="stylesheet" href="{{ asset('build/assets/styles-c3b2700b.css') }}">
+    <!-- <link href="{{ asset('resources/css/styles.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('dist/css/demo.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dist/css/tabler-flags.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/tabler-payments.min.css') }}" rel="stylesheet" /> 
+    <link href="{{ asset('dist/css/tabler-vendors.min.css') }}" rel="stylesheet" /> 
+    <link href="{{ asset('dist/css/demo.min.css') }}" rel="stylesheet" />  
 
     <style>
-        .page-wrapper {
-        background-color: #c2dfeb; 
-    }
-
-
-    .breadcrumb-section {
-    background-color: #c2dfeb; 
-    }
-
+        
         .navbar-nav .nav-link:hover {
-            background-color: #7cc1df; 
-        } 
+    background-color: #ffdf80e8;
+}  
+.navbar {
+    background-color: #f4ce5c;  
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+    
+    .page-wrapper {
+        background-color: #fcecbc; 
+    }
 
         @import url('https://rsms.me/inter/inter.css');
 
         :root {
-            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, "San Francisco", Segoe UI, Roboto, Helvetica Neue, sans-serif;
         }
 
         body {
             font-feature-settings: "cv03", "cv04", "cv11";
-        }
+            line-height: 1.6;
+            color: #4F4F4F; /* Gris oscuro suave */
+            font-size: 16px;
+            background-color: #FFF9E6; /* Fondo amarillo pastel */
+}
 
         .form-control:focus {
             box-shadow: none;
@@ -202,6 +208,26 @@
                             </li>
 
 
+                            <li class="nav-item {{ request()->is('transactions*') ? 'active' : null }}">
+                                <a class="nav-link" href="{{ route('transactions.index') }}">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-left-right" width="24"
+                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 9l-4 4l4 4" />
+                                <path d="M21 9l-4 4l4 4" />
+                                <path d="M10 12h10" />
+                                <path d="M3 12h1" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            {{ __('Kardex') }}
+                        </span>
+                    </a>
+                    </li>
+
+
                             <li class="nav-item dropdown {{ request()->is('orders*') ? 'active' : null }}">
                                 <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -228,7 +254,7 @@
                                     <div class="dropdown-menu-columns">
                                         <div class="dropdown-menu-column">
                                             <a class="dropdown-item" href="{{ route('orders.index') }}">
-                                                {{ __('Todos') }}
+                                                {{ __('Todas') }}
                                             </a>
                                             <a class="dropdown-item" href="{{ route('orders.complete') }}">
                                                 {{ __('Completado') }}
@@ -236,9 +262,9 @@
                                             <a class="dropdown-item" href="{{ route('orders.pending') }}">
                                                 {{ __('Pendiente') }}
                                             </a>
-                                            <a class="dropdown-item" href="{{ route('due.index') }}">
+                                            <!-- <a class="dropdown-item" href="{{ route('due.index') }}">
                                                 {{ __('Vencido') }}
-                                            </a>
+                                            </a> -->
                                         </div>
                                     </div>
                                 </div>

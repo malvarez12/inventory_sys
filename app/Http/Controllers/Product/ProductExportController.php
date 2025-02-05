@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Exception;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xls;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductExportController extends Controller
 {
@@ -21,11 +21,10 @@ class ProductExportController extends Controller
             'No. de Unidad',
             'Código de producto',
             'Cantidad de stock',
-            "Alerta de stock",
+            'Alerta de stock',
             'Precio de compra',
             'Precio de venta',
-            // 'Product Image',
-            "Nota"
+            'Nota'
         );
 
         foreach ($products as $product) {
@@ -36,11 +35,10 @@ class ProductExportController extends Controller
                 'No. Unidad' => $product->unit_id,
                 'Código de producto' => $product->code,
                 'Inventario' => $product->quantity,
-                "Alerta de inventario" => $product->quantity_alert,
+                'Alerta de inventario' => $product->quantity_alert,
                 'Precio de compra' => $product->buying_price,
                 'Precio de venta' => $product->selling_price,
-                // 'Foto de producto' => $product->product_image,
-                "Nota" => $product->note
+                'Nota' => $product->note
             );
         }
 
@@ -49,22 +47,38 @@ class ProductExportController extends Controller
 
     public function store($products)
     {
-        ini_set('max_execution_time', 0);
-        ini_set('memory_limit', '4000M');
+        ini_set('max_execution_time', 0); // Evita que el script se detenga si tarda mucho tiempo
+        ini_set('memory_limit', '4000M'); // Aumenta el límite de memoria
 
         try {
             $spreadSheet = new Spreadsheet();
             $spreadSheet->getActiveSheet()->getDefaultColumnDimension()->setWidth(20);
             $spreadSheet->getActiveSheet()->fromArray($products);
-            $Excel_writer = new Xls($spreadSheet);
-            header('Content-Type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment;filename="products.xls"');
+
+            // Cambiar a formato Xlsx (más moderno y recomendado)
+            $Excel_writer = new Xlsx($spreadSheet);
+
+            // Establecer los encabezados correctos para la exportación en formato .xlsx
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename="products.xlsx"');
             header('Cache-Control: max-age=0');
-            ob_end_clean();
+
+            // Comenzar el buffer de salida
+            ob_start();
+
+            // Limpiar cualquier salida previa para evitar que dañe el archivo
+            ob_clean();
+
+            // Guardar el archivo y enviarlo al navegador
             $Excel_writer->save('php://output');
+
+            // Limpiar el buffer de salida y finalizar
+            ob_end_flush();
             exit();
         } catch (Exception $e) {
-            return;
+            // Puedes registrar el error en los logs para facilitar el debugging
+            error_log($e->getMessage());
+            return response()->json(['error' => 'Error al generar el archivo Excel'], 500);
         }
     }
 }

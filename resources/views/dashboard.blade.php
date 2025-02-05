@@ -15,7 +15,8 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        <a href="{{ route('orders.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                        <a href="{{ route('orders.create') }}" class="btn btn-primary d-none d-sm-inline-block" 
+                        style="background-color: #FF5733; padding: 8px 10px; border-radius: 4px;">
                             <x-icon.plus />
                             Crear nueva venta
                         </a>

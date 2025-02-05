@@ -19,6 +19,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/suppliers', SupplierController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/units', UnitController::class);
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    // Route::get('/transactions/{id}/{type}', [TransactionController::class, 'show'])->name('transactions.show');
+    Route::get('transactions/{id}/{type}', [TransactionController::class, 'show'])->name('transactions.show');
+
+
+    
+
 
     // Route Products
     Route::get('products/import/', [ProductImportController::class, 'create'])->name('products.import.view');
@@ -110,9 +118,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/purchases', [PurchaseController::class, 'index'])->name('purchases.index');
     Route::get('/purchases/create', [PurchaseController::class, 'create'])->name('purchases.create');
     Route::post('/purchases', [PurchaseController::class, 'store'])->name('purchases.store');
+    Route::put('/purchases/{uuid}', [PurchaseController::class, 'update'])->name('purchases.update');
 
-    //Route::get('/purchases/show/{purchase}', [PurchaseController::class, 'show'])->name('purchases.show');
+
+    // Route::get('/purchases/{purchase}', [PurchaseController::class, 'show'])->name('purchases.show');
+    // Route::get('/purchases/{uuid}', [PurchaseController::class, 'show'])->name('purchases.show');
     Route::get('/purchases/{purchase}', [PurchaseController::class, 'show'])->name('purchases.show');
+
 
     //Route::get('/purchases/edit/{purchase}', [PurchaseController::class, 'edit'])->name('purchases.edit');
     Route::get('/purchases/{purchase}/edit', [PurchaseController::class, 'edit'])->name('purchases.edit');
