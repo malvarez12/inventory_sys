@@ -76,6 +76,8 @@ class CustomerController extends Controller
     {
         $customer = Customer::where('uuid', $uuid)->firstOrFail();
 
+
+
         /**
          * Handle upload image with Storage.
          */
@@ -111,7 +113,6 @@ class CustomerController extends Controller
     public function destroy($uuid)
     {
         $customer = Customer::where('uuid', $uuid)->firstOrFail();
-        // Si hay una foto, la eliminamos
         if ($customer->photo && Storage::disk('public')->exists($customer->photo)) {
             Storage::disk('public')->delete($customer->photo);
         }

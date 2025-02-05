@@ -69,7 +69,7 @@
                                         </label>
 
                                         <select class="form-select @error('type') is-invalid @enderror" id="type" name="type">
-                                            <option selected="" disabled="">Elige un proveedor:</option>
+                                            <option selected="" disabled="">Elige tipo de proveedor:</option>
 
                                             @foreach(\App\Enums\SupplierType::cases() as $supplierType)
                                                 <option value="{{ $supplierType->value }}" @selected(old('type') == $supplierType->value)>
@@ -86,17 +86,16 @@
                                     </div>
 
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="bank_name" class="form-label required">
-                                            Nombre de banco
+                                        <label for="bank_name" class="form-label">
+                                            Medio de pago
                                         </label>
 
-                                        <select class="form-select @error('bank_name') is-invalid @enderror" id="bank_name" name="bank_name">
-                                            <option selected="" disabled="">Elige un banco:</option>
+                                        <select class="form-select form-control-solid @error('bank_name') is-invalid @enderror" id="bank_name" name="bank_name">
+                                            <option selected="" disabled="">Elige medio de pago:</option>
+                                            <option value="Efectivo" @if(old('bank_name') == 'Efec')selected="selected"@endif>Efectivo</option>
                                             <option value="BAC" @if(old('bank_name') == 'BAC')selected="selected"@endif>BAC</option>
                                             <option value="Industrial" @if(old('bank_name') == 'Industrial')selected="selected"@endif>Industrial</option>
-                                            <option value="Promerica" @if(old('bank_name') == 'Promerica')selected="selected"@endif>Promerica</option>
                                             <option value="Banrural" @if(old('bank_name') == 'Banrural')selected="selected"@endif>Banrural</option>
-                                            <option value="AZTECA" @if(old('bank_name') == 'Azteca')selected="selected"@endif>Azteca</option>
                                         </select>
                                         @error('bank_name')
                                         <div class="invalid-feedback">

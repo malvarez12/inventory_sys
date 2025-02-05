@@ -93,7 +93,7 @@
                             <x-button.show class="btn-icon" route="{{ route('categories.show', $category) }}" />
                             <x-button.edit class="btn-icon" route="{{ route('categories.edit', $category) }}" />
                             <x-button.delete class="btn-icon" route="{{ route('categories.destroy', $category) }}"
-                                onclick="return confirm('Estás seguro de eliminar category {{ $category->name }}?')" />
+                                onclick="return confirm('¿Estás de querer eliminar categoría {{ $category->name }}?')" />
                         </td>
                     </tr>
                 @empty

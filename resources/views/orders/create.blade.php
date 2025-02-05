@@ -136,7 +136,7 @@
                                         </tr>
                                         @empty
                                         <td colspan="5" class="text-center">
-                                            {{ __('Agregar productos') }}
+                                            {{ __('Agregue productos') }}
                                         </td>
                                         @endforelse
 

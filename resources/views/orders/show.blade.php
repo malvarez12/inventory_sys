@@ -171,7 +171,7 @@
                             @csrf
 
                             <button type="submit" class="btn btn-success"
-                                onclick="return confirm('¿Estás seguro de que quieres completar esta venta?')">
+                                onclick="return confirm('¿Estás de que quieres completar esta venta?')">
                                 {{ __('Completar venta') }}
                             </button>
                         </form>

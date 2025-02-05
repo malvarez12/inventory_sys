@@ -5,14 +5,16 @@
 @section('content')
 <style>
 body {
+
     background: linear-gradient(135deg, #0083C9, #FFD700);
+    background-color: #0090cd; 
 }
     .card-md {
         background-color: #ffffff;
         border-radius: 10px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         margin: auto;
-        max-width: 400px; /* Ajustar el ancho de la tarjeta */
+        max-width: 400px; 
         padding: 20px;
     }
     .card-body {
@@ -76,7 +78,7 @@ body {
                        name="email"
                        id="email"
                        class="form-control"
-                       placeholder="your@email.com"
+                       placeholder="nombre@correo.com"
                        autocomplete="off"
                        value="{{ old('email') }}"
                 >
@@ -92,7 +94,7 @@ body {
                            name="password"
                            id="password"
                            class="form-control"
-                           placeholder="Your password"
+                           placeholder="Contraseña"
                            autocomplete="off"
                     >
                 </div>

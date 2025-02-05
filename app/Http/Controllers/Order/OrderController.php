@@ -101,7 +101,7 @@ class OrderController extends Controller
         // Redirige a la lista de órdenes con un mensaje de éxito
         return redirect()
             ->route('orders.index')
-            ->with('success', 'Venta creada!');
+            ->with('success', 'Venta creada');
     }
 
     // Muestra una orden específica

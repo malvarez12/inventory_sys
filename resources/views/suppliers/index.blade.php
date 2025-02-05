@@ -6,7 +6,7 @@
         <x-empty
             title="Proveedores no encontrados"
             message="Intenta ajustar tu búsqueda o filtro para encontrar lo que estás buscando."
-            button_label="{{ __('Agrega a tu primer proveedor') }}"
+            button_label="{{ __('Agregar proveedor') }}"
             button_route="{{ route('suppliers.create') }}"
         />
     @else

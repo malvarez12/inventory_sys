@@ -170,7 +170,7 @@
 
                         <button type="submit"
                                 class="btn btn-success"
-                                onclick="return confirm('¿Estás seguro de que quieres aprobar esta compra?')"
+                                onclick="return confirm('¿¿Estás de que quieres aprobar esta compra?')"
                         >
                             {{ __('Aprobar compra') }}
                         </button>

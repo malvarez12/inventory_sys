@@ -8,6 +8,7 @@
         "php": "^8.1",
         "anayarojo/shoppingcart": "^4.2",
         "awobaz/compoships": "^2.2",
+        "barryvdh/laravel-debugbar": "^3.14",
         "guzzlehttp/guzzle": "^7.2",
         "haruncpi/laravel-id-generator": "^1.1",
         "laravel/framework": "^10.8",
@@ -22,7 +23,7 @@
         "rappasoft/laravel-livewire-tables": "^3.1"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.14",
+        "barryvdh/laravel-debugbar": "^3.9",
         "beyondcode/laravel-query-detector": "^1.7",
         "fakerphp/faker": "^1.9.1",
         "kyslik/column-sortable": "^6.5",

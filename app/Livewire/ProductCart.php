@@ -89,7 +89,7 @@ class ProductCart extends Component
 
         if ($exists->isNotEmpty())
         {
-            session()->flash('message', 'Product exists in the cart!');
+            session()->flash('message', 'El producto existe en el carrito!');
 
             return;
         }
@@ -142,7 +142,7 @@ class ProductCart extends Component
         {
             if ($this->check_quantity[$product_id] < $this->quantity[$product_id])
             {
-                session()->flash('message', 'The requested quantity is not available in stock.');
+                session()->flash('message', 'La cantidad solicitada no está disponible en stock.');
                 return;
             }
         }

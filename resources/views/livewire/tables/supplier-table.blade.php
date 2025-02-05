@@ -105,7 +105,7 @@
                         <x-button.delete 
                             class="btn-icon" 
                             route="{{ route('suppliers.destroy', $supplier->uuid) }}" 
-                            onclick="return confirm('Estás seguro de eliminar proveedor {{ $supplier->name }}?')"
+                            onclick="return confirm('¿Estás de eliminar proveedor {{ $supplier->name }}?')"
                         />
                     </td>
                 </tr>

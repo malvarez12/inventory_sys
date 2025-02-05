@@ -87,7 +87,7 @@ class QuotationController extends Controller
 
         return redirect()
             ->route('quotations.index')
-            ->with('success', 'La cotización ha sido creada!');
+            ->with('success', 'La cotización ha sido creada');
     }
 
     public function show($uuid)

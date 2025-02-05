@@ -111,7 +111,7 @@
                             <x-button.show class="btn-icon" route="{{ route('purchases.edit', $purchase->uuid) }}"/>
                             {{-- <x-button.complete class="btn-icon"  onclick="return confirm('¿Está seguro de aprobar la compra No. {{ $purchase->purchase_no }}!') route="{{ route('purchases.update', $purchase->uuid) }}"/> --}}
                             <x-button.complete class="btn-icon" route="{{ route('purchases.update', $purchase->uuid) }}" onclick="return confirm('¿Está seguro de aprobar la compra No. {{ $purchase->purchase_no }}?')"/>
-                            <x-button.delete class="btn-icon" onclick="return confirm('Estás seguro!')" route="{{ route('purchases.delete', $purchase->uuid) }}"/>
+                            <x-button.delete class="btn-icon" onclick="return confirm('¿Estás!')" route="{{ route('purchases.delete', $purchase->uuid) }}"/>
                         </td>
                     @endif
                 </tr>

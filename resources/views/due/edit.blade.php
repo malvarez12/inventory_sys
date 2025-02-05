@@ -17,7 +17,7 @@
                     <div class="card-header">
                         <div>
                             <h3 class="card-title">
-                                {{ __('Información de ventas con saldo') }}
+                                {{ __('Información de ventas con saldo pendiente') }}
                             </h3>
                         </div>
 
@@ -145,10 +145,10 @@
                                     <td colspan="6" class="text-end">Monto pendiente</td>
                                     <td class="text-center">{{ number_format($order->due, 2) }}</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td colspan="6" class="text-end">IVA</td>
                                     <td class="text-center">{{ number_format($order->vat, 2) }}</td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td colspan="6" class="text-end">Total</td>
                                     <td class="text-center">{{ number_format($order->total, 2) }}</td>

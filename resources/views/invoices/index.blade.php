@@ -57,12 +57,12 @@
                                 <p class="inv-from-2">{{ $customer->address }}</p>
                             </div>
                             <div class="col-sm-6 text-end mb-50">
-                                <h4 class="inv-title-1">Store</h4>
-                                <p class="inv-from-1">Name Store</p>
-                                <p class="inv-from-1">(+62) 123 123 123</p>
-                                <p class="inv-from-1">email@example.com</p>
-                                <p class="inv-from-2">Cirebon, Jawa Barat, Indonesia</p>
-                            </div>
+                                <h4 class="inv-title-1">Tienda</h4>
+                                <p class="inv-from-1">Happy Colors</p>
+                                <p class="inv-from-1">Colonia Prados de Villahermosa</p>
+                                <p class="inv-from-1">Zona 7, San Miguel Petapa</p>
+                                <p class="inv-from-2">+502 3606-3908</p>
+                                </div>
                         </div>
                     </div>
                     <div class="order-summary">
@@ -70,9 +70,9 @@
                             <table class="default-table invoice-table">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">Item</th>
-                                    <th class="text-center">Price</th>
-                                    <th class="text-center">Quantity</th>
+                                    <th class="text-center">Producto</th>
+                                    <th class="text-center">Precio</th>
+                                    <th class="text-center">Cantidad</th>
                                     <th class="text-center">Subtotal</th>
                                 </tr>
                                 </thead>
@@ -92,7 +92,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="text-end"><strong>Tax</strong></td>
+                                    <td colspan="3" class="text-end"><strong>Impuesto</strong></td>
                                     <td class="text-center">
                                         <strong>{{ Cart::tax() }}</strong>
                                     </td>
@@ -146,7 +146,7 @@
                         <input type="hidden" name="customer_id" value="{{ $customer->id }}">
                         <div class="mb-3">
                             <!-- Form Group (type of product category) -->
-                            <label class="small mb-1" for="payment_type">Payment <span class="text-danger">*</span></label>
+                            <label class="small mb-1" for="payment_type">Pago <span class="text-danger">*</span></label>
                             <select class="form-control @error('payment_type') is-invalid @enderror" id="payment_type" name="payment_type">
                                 <option selected="" disabled="">Elige tipo de pago:</option>
                                 <option value="Efectivo">Pago en efectivo</option>

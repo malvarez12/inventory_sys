@@ -119,7 +119,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-end">
-                                                <strong>Impuesto</strong>
+                                                <strong>Impuesto(Incluido en precio)</strong>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <strong>

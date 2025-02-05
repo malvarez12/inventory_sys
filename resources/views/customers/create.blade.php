@@ -31,9 +31,9 @@
 
                                 <img class="img-account-profile rounded-circle mb-2" src="{{ asset('assets/img/demo/user-placeholder.svg') }}" alt="" id="image-preview" />
 
-                                <div class="small font-italic text-muted mb-2">Formato JPG o PNG no mayor a 2 MB</div>
+                                <!-- <div class="small font-italic text-muted mb-2">Formato JPG o PNG no mayor a 2 MB</div>
 
-                                <input class="form-control @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();">
+                                <input class="form-control @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();"> -->
 
                                 @error('photo')
                                 <div class="invalid-feedback">
@@ -70,6 +70,7 @@
                                         <select class="form-select form-control-solid @error('bank_name') is-invalid @enderror" id="bank_name" name="bank_name">
                                             <option selected="" disabled="">Elige medio de pago:</option>
                                             <option value="Efectivo" @if(old('bank_name') == 'Efectivo')selected="selected"@endif>Efectivo</option>
+                                            <option value="Efectivo" @if(old('bank_name') == 'Efec')selected="selected"@endif>Efectivo</option>
                                             <option value="BAC" @if(old('bank_name') == 'BAC')selected="selected"@endif>BAC</option>
                                             <option value="Industrial" @if(old('bank_name') == 'Industrial')selected="selected"@endif>Industrial</option>
                                             <option value="Banrural" @if(old('bank_name') == 'Banrural')selected="selected"@endif>Banrural</option>

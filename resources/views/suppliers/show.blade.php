@@ -82,7 +82,7 @@
                                     <td>{{ $supplier->account_number }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Nombre de banco</td>
+                                    <td>Medio de pago</td>
                                     <td>{{ $supplier->bank_name }}</td>
                                 </tr>
                             </tbody>

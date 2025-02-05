@@ -10082,7 +10082,6 @@
     ],
     "dev": true,
     "dev-package-names": [
-        "barryvdh/laravel-debugbar",
         "beyondcode/laravel-query-detector",
         "fakerphp/faker",
         "filp/whoops",
@@ -10091,7 +10090,6 @@
         "laravel/breeze",
         "laravel/pint",
         "laravel/sail",
-        "maximebf/debugbar",
         "mockery/mockery",
         "myclabs/deep-copy",
         "nunomaduro/collision",

@@ -31,6 +31,18 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     .page-wrapper {
         background-color: #fcecbc; 
     }
+    .page-wrapper {
+    background-color: #c2dfeb; 
+    }
+
+
+    .breadcrumb-section {
+    background-color: #c2dfeb; 
+    }
+
+        .navbar-nav .nav-link:hover {
+            background-color: #7cc1df; 
+        } 
 
         @import url('https://rsms.me/inter/inter.css');
 
