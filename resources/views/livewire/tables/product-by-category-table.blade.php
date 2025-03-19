@@ -2,9 +2,9 @@
     <div class="card">
         <div class="card-header">
             <div>
-                <h3 class="card-title">
+                <h2 class="card-title">
                     Categoría: {{ $category->name }}
-                </h3>
+                </h2>
             </div>
 
             <div class="card-actions btn-actions">

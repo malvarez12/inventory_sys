@@ -13,32 +13,33 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        // Obtén todas las compras y ventas
-        $purchases = Purchase::query()->get()->map(function ($purchase) {
+        // Obtener compras ordenadas por fecha descendente
+        $purchases = Purchase::query()->orderBy('created_at', 'desc')->get()->map(function ($purchase) {
             return [
                 'id' => $purchase->id,
                 'type' => 'Compra',
                 'date' => Carbon::parse($purchase->created_at), // Convertir explícitamente a Carbon
             ];
         });
-        
-        $orders = Order::query()->get()->map(function ($order) {
+    
+        // Obtener ventas ordenadas por fecha descendente
+        $orders = Order::query()->orderBy('created_at', 'desc')->get()->map(function ($order) {
             return [
                 'id' => $order->id,
                 'type' => 'Venta',
                 'date' => Carbon::parse($order->created_at), // Convertir explícitamente a Carbon
             ];
         });
-        
-
+    
         // Combinar ambas colecciones y ordenar por fecha
-        $transactions = $purchases->merge($orders)->sortByDesc('date');
-
+        $transactions = $purchases->merge($orders)->sortByDesc('date')->values(); // Asegurar índices correctos
+    
         // Paginar la colección combinada
         $transactions = $this->paginate($transactions, 10); // 10 registros por página
-
+    
         return view('transactions.index', compact('transactions'));
     }
+    
 
     public function show($id, $type)
     {

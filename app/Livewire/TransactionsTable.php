@@ -34,24 +34,27 @@ class TransactionsTable extends Component
 
     public function render()
     {
-        // Obtenemos compras y ventas
+        // Obtener compras con los campos renombrados
         $purchases = Purchase::query()
             ->select('id', 'created_at as date', 'total_amount as total', \DB::raw("'Compra' as type"));
-
+    
+        // Obtener ventas con los campos renombrados
         $orders = Order::query()
             ->select('id', 'order_date as date', 'total', \DB::raw("'Venta' as type"));
-
-        // Unimos ambos conjuntos
-        $transactions = $purchases->unionAll($orders)
+    
+        // Unir ambas consultas y ordenar antes de la paginación
+        $transactions = \DB::table(\DB::raw("({$purchases->toSql()} UNION ALL {$orders->toSql()}) as transactions"))
+            ->mergeBindings($purchases->getQuery()) // Evita errores de parámetros en Laravel
+            ->mergeBindings($orders->getQuery())
             ->when($this->search, function ($query) {
                 $query->where('id', 'like', '%' . $this->search . '%');
             })
-            ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc') // Orden dinámico
+            ->orderBy('date', 'desc') // Ordenar por la fecha en orden descendente
             ->paginate($this->perPage);
-
+    
         return view('livewire.transactions-table', [
             'transactions' => $transactions,
         ]);
-    }
+    }    
 
 }

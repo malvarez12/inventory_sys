@@ -1,16 +1,10 @@
-@extends('layouts.tabler')
 
-@section('content')
-<div class="page-body">
-    <div class="container-xl">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h3 class="card-title">
-                            {{ __('Detalle de compras') }}
-                        </h3>
-                    </div>
+<div class="card bg-white shadow-md rounded-lg">
+    <div class="card-header flex items-center justify-between p-4 border-b">
+            <h2 class="text-lg font-semibold text-gray-700">
+                {{ __('Detalles de compras') }}
+             </h2>
+
 
                     <div class="card-actions btn-actions">
                         <div class="dropdown">
@@ -162,4 +156,4 @@
         </div>
     </div>
 </div>
-@endsection
+<!-- @endsection -->

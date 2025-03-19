@@ -1,8 +1,8 @@
 <div class="card bg-white shadow-md rounded-lg">
     <div class="card-header flex items-center justify-between p-4 border-b">
-        <h2 class="text-lg font-semibold text-gray-700">
+        <<h1 class="card-title" style="font-size: 22px; font-weight: bold;">">
             {{ __('Proveedores') }}
-        </h2>
+        </h1>
 
         <div class="card-actions">
             <x-action.create route="{{ route('suppliers.create') }}" />

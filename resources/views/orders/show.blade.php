@@ -6,9 +6,9 @@
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <h3 class="card-title">
-                            {{ __('Detalle de venta') }}
-                        </h3>
+                        <h class="card-title">
+                            {{ __('Detalles de venta') }}
+                        </h>
                     </div>
 
                     <div class="card-actions btn-actions">
@@ -16,7 +16,7 @@
                             <div class="dropdown">
                                 <a href="#" class="btn-action dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-haspopup="true"
-                                    aria-expanded="false"><!-- Download SVG icon from http://tabler-icons.io/i/dots-vertical -->
+                                    aria-expanded="false">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -33,7 +33,7 @@
                                         @method('put')
 
                                         <button type="submit" class="dropdown-item text-success"
-                                            onclick="return confirm('¿Está seguro de que desea aprobar esta compra?')">
+                                            onclick="return confirm('¿Está seguro de que desea aprobar esta venta?')">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="icon icon-tabler icon-tabler-check" width="24" height="24"
                                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -141,10 +141,6 @@
                                     <td colspan="6" class="text-end">Monto pendiente</td>
                                     <td class="text-center">{{ number_format($order->due, 2) }}</td>
                                 </tr>
-                                <!-- <tr>
-                                    <td colspan="6" class="text-end">IVA</td>
-                                    <td class="text-center">{{ number_format($order->vat, 2) }}</td>
-                                </tr> -->
                                 <tr>
                                     <td colspan="6" class="text-end">Total</td>
                                     <td class="text-center">{{ number_format($order->total, 2) }}</td>
@@ -171,7 +167,7 @@
                             @csrf
 
                             <button type="submit" class="btn btn-success"
-                                onclick="return confirm('¿Estás de que quieres completar esta venta?')">
+                                onclick="return confirm('¿Estás seguro que quieres completar esta venta?')">
                                 {{ __('Completar venta') }}
                             </button>
                         </form>
