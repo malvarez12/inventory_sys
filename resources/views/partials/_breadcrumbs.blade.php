@@ -1,26 +1,13 @@
-{{---
-<nav class="mt-4 rounded" aria-label="breadcrumb">
-    <ol class="breadcrumb px-3 py-2 rounded mb-0">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">Categories</li>
 
-        @foreach(request()->breadcrumbs()->segments() as $segment)
-            <li class="breadcrumb-item">
-                <a href="{{ $segment->url() }}">
-                    {{ optional($segment->model())->title ?: $segment->name() }}
-                </a>
-            </li>
-        @endforeach
-    </ol>
-</nav>
----}}
+<!-- <div class="card bg-white shadow-md rounded-lg">
+    <div class="card-header flex items-center justify-between p-4 border-b">
+            <h2 class="text-lg font-semibold text-gray-700">
+                {{ __('Detalles de clientes') }}
+             </h2>
 
-<ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs">
-    @foreach(request()->breadcrumbs()->segments() as $segment)
-        <li class="breadcrumb-item">
-            <a href="{{ $segment->url() }}">
-                {{ optional($segment->model())->title ?: $segment->name() }}
-            </a>
-        </li>
-    @endforeach
-</ol>
+
+                    
+                            
+    </div>
+</div> -->
+

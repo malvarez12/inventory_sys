@@ -5,13 +5,10 @@
         <div class="container-xl">
             <div class="row g-2 align-items-center mb-3">
                 <div class="col">
-                    <h2 class="page-title">
-                        {{ $product->name }}
-                    </h2>
+
                 </div>
             </div>
 
-            @include('partials._breadcrumbs')
         </div>
     </div>
 
@@ -33,43 +30,11 @@
                             </div>
                         </div>
                     </div>
-                    <!---
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title">
-                                    Product Code
-                                </div>
-                                <div class="row row-cards">
-                                    <div class="col-md-6">
-                                        <label class="small mb-1">
-                                            Product code
-                                        </label>
-
-                                        <div class="form-control">
-                                            {{ $product->code }}
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 align-middle">
-                                        <label class="small mb-1">
-                                            Barcode
-                                        </label>
-
-                                        <div class="mt-1">
-                                            {!! $barcode !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    --->
-
+                  
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">
+                                <h3 class="card-title" style="font-size: 22px; font-weight: bold;">
                                     {{ __('Detalles de producto') }}
                                 </h3>
                             </div>
@@ -85,13 +50,10 @@
                                             <td>{{ $product->slug }}</td>
                                         </tr>
                                         <tr>
-                                            <td><span class="text-secondary">Código</span></td>
+                                            <td>Código</td>
                                             <td>{{ $product->code }}</td>
                                         </tr>
-                                        <!-- <tr>
-                                            <td>Código de barras</td>
-                                            <td>{!! $barcode !!}</td>
-                                        </tr> -->
+
                                         <tr>
                                             <td>Categoría</td>
                                             <td>

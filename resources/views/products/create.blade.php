@@ -13,24 +13,12 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title">
+                                <h3 class="card-title" style="font-size: 22px; font-weight: bold;">
                                     {{ __('Descripción') }}
                                 </h3>
 
                                 <img class="img-account-profile mb-2" src="{{ asset('assets/img/products/default.webp') }}" alt="" id="image-preview" />
 
-                                <!-- <div class="small font-italic text-muted mb-2">
-                                    Formato JPG o PNG no mayor a 2 MB
-                                </div>
-
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    id="image"
-                                    name="product_image"
-                                    class="form-control @error('product_image') is-invalid @enderror"
-                                    onchange="previewImage();"
-                                > -->
 
                                 @error('product_image')
                                 <div class="invalid-feedback">

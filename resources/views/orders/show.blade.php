@@ -6,9 +6,9 @@
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <h class="card-title">
+                        <h1 class="card-title" style="font-size: 22px; font-weight: bold;">
                             {{ __('Detalles de venta') }}
-                        </h>
+                        </h1>
                     </div>
 
                     <div class="card-actions btn-actions">
@@ -54,111 +54,126 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="row row-cards mb-3">
-                        <div class="col">
-                            <label for="order_date" class="form-label required">
-                                {{ __('Fecha de compra') }}
-                            </label>
-                            <input type="text" id="order_date" class="form-control"
-                                value="{{ $order->order_date->format('d-m-Y') }}" disabled>
+    <div class="row row-cards mb-3">
+        <div class="col">
+            <label for="order_date" class="form-label required" style="font-size: 18px; font-weight: bold;">
+                {{ __('Fecha de venta') }}
+            </label>
+            <input type="text" id="order_date" class="form-control" 
+                   style="font-size: 18px; padding: 10px;"
+                   value="{{ $order->order_date->format('d-m-Y') }}" disabled>
+        </div>
+
+        <div class="col">
+            <label for="invoice_no" class="form-label required" style="font-size: 18px; font-weight: bold;">
+                {{ __('No. de comprobante') }}
+            </label>
+            <input type="text" id="invoice_no" class="form-control" 
+                   style="font-size: 18px; padding: 10px;"
+                   value="{{ $order->invoice_no }}" disabled>
+        </div>
+
+        <div class="col">
+            <label for="customer" class="form-label required" style="font-size: 18px; font-weight: bold;">
+                {{ __('Cliente') }}
+            </label>
+            <input type="text" id="customer" class="form-control" 
+                   style="font-size: 18px; padding: 10px;"
+                   value="{{ $order->customer->name }}" disabled>
+        </div>
+
+        <div class="col">
+            <label for="payment_type" class="form-label required" style="font-size: 18px; font-weight: bold;">
+                {{ __('Tipo de pago') }}
+            </label>
+            <input type="text" id="payment_type" class="form-control" 
+                   style="font-size: 18px; padding: 10px;"
+                   value="{{ $order->payment_type }}" disabled>
+        </div>
+    </div>
+</div>
+
+                    <div class="tabla-ventas">
+    <table class="table table-bordered table-striped align-middle">
+        <tbody>
+            <tr>
+                <th style="font-size: 18px;">No.</th>
+                <th style="font-size: 18px;">Foto</th>
+                <th style="font-size: 18px;">Nombre de Producto</th>
+                <th style="font-size: 18px;">Código de Producto</th>
+                <th style="font-size: 18px;">Cantidad</th>
+                <th style="font-size: 18px;">Precio</th>
+                <th style="font-size: 18px;">Total</th>
+            </tr>
+            @foreach ($order->details as $item)
+                <tr>
+                    <td class="align-middle text-center" style="font-size: 18px;">{{ $loop->iteration }}</td>
+                    <td class="align-middle justify-content-center text-center">
+                        <div style="max-height: 80px; max-width: 80px;">
+                            <img class="img-fluid"
+                                src="{{ $item->product->product_image ? asset('storage/' . $item->product->product_image) : asset('assets/img/products/default.webp') }}">
                         </div>
+                    </td>
+                    <td class="align-middle text-center" style="font-size: 18px;">
+                        {{ $item->product->name }}
+                    </td>
+                    <td class="align-middle text-center">
+                        <span class="badge bg-indigo-lt" style="font-size: 18px;">
+                            {{ $item->product->code }}
+                        </span>
+                    </td>
+                    <td class="align-middle text-center">
+                        <span class="badge bg-primary-lt" style="font-size: 18px;">
+                            {{ $item->quantity }}
+                        </span>
+                    </td>
+                    <td class="align-middle text-center" style="font-size: 18px;">
+                        {{ number_format($item->unitcost, 2) }}
+                    </td>
+                    <td class="align-middle text-center" style="font-size: 18px;">
+                        {{ number_format($item->total, 2) }}
+                    </td>
+                </tr>
+            @endforeach
+            <tr>
+                <td class="align-middle text-end" colspan="6" style="font-size: 18px;">
+                    Monto pagado
+                </td>
+                <td class="align-middle text-center" style="font-size: 18px;">
+                    {{ number_format($order->pay, 2) }}
+                </td>
+            </tr>
+            <tr>
+                <td class="align-middle text-end" colspan="6" style="font-size: 18px;">
+                    Monto pendiente
+                </td>
+                <td class="align-middle text-center" style="font-size: 18px;">
+                    {{ number_format($order->due, 2) }}
+                </td>
+            </tr>
+            <tr>
+                <td class="align-middle text-end" colspan="6" style="font-size: 18px;">
+                    Total
+                </td>
+                <td class="align-middle text-center" style="font-size: 18px;">
+                    {{ number_format($order->total, 2) }}
+                </td>
+            </tr>
+            <tr>
+                <td class="align-middle text-end" colspan="6" style="font-size: 18px;">
+                    Estado
+                </td>
+                <td class="align-middle text-center">
+                    <span class="badge {{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'bg-success-lt' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'bg-warning-lt' : '') }}" style="font-size: 18px;">
+                        {{ $order->order_status->label() }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-                        <div class="col">
-                            <label for="invoice_no" class="form-label required">
-                                {{ __('No. de comprobante') }}
-                            </label>
-                            <input type="text" id="invoice_no" class="form-control" value="{{ $order->invoice_no }}"
-                                disabled>
-                        </div>
 
-                        <div class="col">
-                            <label for="customer" class="form-label required">
-                                {{ __('Cliente') }}
-                            </label>
-                            <input type="text" id="customer" class="form-control" value="{{ $order->customer->name }}"
-                                disabled>
-                        </div>
-
-                        <div class="col">
-                            <label for="payment_type" class="form-label required">
-                                {{ __('Tipo de pago') }}
-                            </label>
-
-                            <input type="text" id="payment_type" class="form-control" value="{{ $order->payment_type }}"
-                                disabled>
-                        </div>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered align-middle">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col" class="align-middle text-center">No.</th>
-                                    <th scope="col" class="align-middle text-center">Foto</th>
-                                    <th scope="col" class="align-middle text-center">Nombre de producto</th>
-                                    <th scope="col" class="align-middle text-center">Códidgo de producto</th>
-                                    <th scope="col" class="align-middle text-center">Cantidad</th>
-                                    <th scope="col" class="align-middle text-center">Precio</th>
-                                    <th scope="col" class="align-middle text-center">Detalle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($order->details as $item)
-                                    <tr>
-                                        <td class="align-middle text-center">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div style="max-height: 80px; max-width: 80px;">
-                                                <img class="img-fluid"
-                                                    src="{{ $item->product->product_image ? asset('storage/' . $item->product->product_image) : asset('assets/img/products/default.webp') }}">
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            {{ $item->product->name }}
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            {{ $item->product->code }}
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            {{ $item->quantity }}
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            {{ number_format($item->unitcost, 2) }}
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            {{ number_format($item->total, 2) }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                <tr>
-                                    <td colspan="6" class="text-end">
-                                        Monto pagado
-                                    </td>
-                                    <td class="text-center">{{ number_format($order->pay, 2) }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="6" class="text-end">Monto pendiente</td>
-                                    <td class="text-center">{{ number_format($order->due, 2) }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="6" class="text-end">Total</td>
-                                    <td class="text-center">{{ number_format($order->total, 2) }}</td>
-                                </tr>
-                                <tr>
-                                <td colspan="6" class="text-end">Estado</td>
-                                    <td class="text-center">
-                                        <x-status dot
-                                            color="{{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'green' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'orange' : '') }}"
-                                            class="text-uppercase">
-                                            {{ $order->order_status->label() }}
-                                        </x-status>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
 
                 <div class="card-footer text-end">
                     @if ($order->order_status === \App\Enums\OrderStatus::PENDING)

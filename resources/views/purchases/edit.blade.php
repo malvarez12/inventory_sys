@@ -18,44 +18,82 @@
                     </a>
                 </div>
             </div>
+
+
             <div class="card-body">
-                <div class="row gx-3 mb-3">
-                    <div class="col-md-6">
-                        <label class="small mb-1 fs-2">Nombre</label>
-                        <div class="form-control form-control-solid" style="font-size: 18px;">{{ $purchase->supplier->name }}</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="small mb-1 fs-2">Correo electrónico</label>
-                        <div class="form-control form-control-solid" style="font-size: 18px;">{{ $purchase->supplier->email }}</div>
-                    </div>
-                </div>
-                <div class="row gx-3 mb-3">
-                    <div class="col-md-6">
-                        <label class="small mb-1 fs-2">Teléfono</label>
-                        <div class="form-control form-control-solid" style="font-size: 18px;">{{ $purchase->supplier->phone }}</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="small mb-1 fs-2">Fecha de compra</label>
-                        <div class="form-control form-control-solid" style="font-size: 18px;">{{ $purchase->date }}</div>
-                    </div>
-                </div>
-                <div class="row gx-3 mb-3">
-                    <div class="col-md-6">
-                        <label class="small mb-1 fs-2">No. de compra</label>
-                        <div class="form-control" style="font-size: 18px;">{{ $purchase->purchase_no }}</div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="small mb-1 fs-2">Total</label>
-                        <div class="form-control form-control-solid" style="font-size: 18px;">{{ $purchase->total_amount }}</div>
-                    </div>
-                </div>
+    <div class="row row-cards mb-3">
+        <div class="col">
+            <label style="font-size: 18px; font-weight: bold;">
+                {{ __('Nombre') }}
+            </label>
+            <input type="text" class="form-control form-control-solid" 
+                   style="font-size: 16px; background-color: #f8f9fa;" 
+                   value="{{ $purchase->supplier->name }}" disabled>
+        </div>
+
+        <div class="col">
+            <label style="font-size: 18px; font-weight: bold;">
+                {{ __('Correo electrónico') }}
+            </label>
+            <input type="text" class="form-control form-control-solid" 
+                   style="font-size: 16px; background-color: #f8f9fa;" 
+                   value="{{ $purchase->supplier->email }}" disabled>
+        </div>
+    </div>
+
+    <div class="row row-cards mb-3">
+        <div class="col">
+            <label style="font-size: 18px; font-weight: bold;">
+                {{ __('Teléfono') }}
+            </label>
+            <input type="text" class="form-control form-control-solid" 
+                   style="font-size: 16px; background-color: #f8f9fa;" 
+                   value="{{ $purchase->supplier->phone }}" disabled>
+        </div>
+
+        <div class="col">
+            <label style="font-size: 18px; font-weight: bold;">
+                {{ __('Fecha de compra') }}
+            </label>
+            <input type="text" class="form-control form-control-solid" 
+                   style="font-size: 16px; background-color: #f8f9fa;" 
+                   value="{{ $purchase->date }}" disabled>
+        </div>
+    </div>
+
+    <div class="row row-cards mb-3">
+        <div class="col">
+            <label style="font-size: 18px; font-weight: bold;">
+                {{ __('No. de compra') }}
+            </label>
+            <input type="text" class="form-control form-control-solid" 
+                   style="font-size: 16px; background-color: #f8f9fa;" 
+                   value="{{ $purchase->purchase_no }}" disabled>
+        </div>
+
+        <div class="col">
+            <label style="font-size: 18px; font-weight: bold;">
+                {{ __('Total') }}
+            </label>
+            <input type="text" class="form-control form-control-solid" 
+                   style="font-size: 16px; background-color: #f8f9fa;" 
+                   value="{{ $purchase->total_amount }}" disabled>
+        </div>
+    </div>
+
+    <div class="row row-cards mb-3">
+        <div class="col">
+            <label style="font-size: 18px; font-weight: bold;">
+                {{ __('Dirección') }}
+            </label>
             
-                <div class="col-lg-6 mb-3">
-                    <label  class="small mb-1 fs-2">Dirección</label>
-                    <div class="form-control form-control-solid" style="font-size: 18px;">{{ $purchase->supplier->address }}</div>
-                </div>
-                <div class="col-lg-12">
-                    
+            <input type="text" class="form-control form-control-solid" 
+                   style="font-size: 16px; background-color: #f8f9fa;" 
+                   value="{{ $purchase->supplier->address }}" disabled>
+        </div>
+    </div>
+</div>
+
                 
                 <div class="tabla-compras">
     <table class="table table-bordered table-striped align-middle">

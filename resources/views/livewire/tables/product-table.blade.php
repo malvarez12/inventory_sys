@@ -1,8 +1,8 @@
 <div class="card">
     <div class="card-header">
         <div>
-            <h2 class="card-title">
-                {{ __('Productos') }}
+            <h2 class="card-title" >
+                {{ __('Productosss') }}
             </h2>
         </div>
 
@@ -115,9 +115,9 @@
                         <td class="px-5 py-3 text-sm text-gray-500 text-center">
                             <x-button.show class="btn-icon" route="{{ route('products.show', $product->uuid) }}" />
                             <x-button.edit class="btn-icon" route="{{ route('products.edit', $product->uuid) }}" />
-                            <x-button.delete class="btn-icon" route="{{ route('products.destroy', $product->uuid) }}" onclick="return confirm('Estás seguro de eliminar {{ $product->name }}?')" />
-                            <x-button.delete class="btn-icon" route="{{ route('products.destroy', $product->uuid) }}"
-                                onclick="return confirm('¿Estás de eliminar {{ $product->name }}?')" />
+                            <x-button.delete class="btn-icon" route="{{ route('products.destroy', $product->uuid) }}" 
+                            onclick="return confirm('Estás seguro de eliminar {{ $product->name }}?')" />
+
                         </td>
                     </tr>
                 @empty

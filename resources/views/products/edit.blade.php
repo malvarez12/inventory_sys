@@ -5,13 +5,13 @@
         <div class="container-xl">
             <div class="row g-2 align-items-center mb-3">
                 <div class="col">
-                    <h2 class="page-title">
+                    <h2 class="page-title" style="font-size: 22px; font-weight: bold;">
                         {{ __('Editar producto') }}
                     </h2>
                 </div>
             </div>
 
-            @include('partials._breadcrumbs', ['model' => $product])
+            
         </div>
     </div>
 

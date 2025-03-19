@@ -5,35 +5,24 @@
     <div class="container-xl">
         <div class="row g-2 align-items-center mb-3">
             <div class="col">
-                <h2 class="page-title">
-                    {{ __('Crear cliente') }}
-                </h2>
             </div>
         </div>
 
-        @include('partials._breadcrumbs')
+        
     </div>
 </div>
+
 
 <div class="page-body">
     <div class="container-xl">
         <div class="row row-cards">
-
             <form action="{{ route('customers.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <!-- <h3 class="card-title">
-                                    {{ __('Customer Image') }}
-                                </h3> -->
-
                                 <img class="img-account-profile rounded-circle mb-2" src="{{ asset('assets/img/demo/user-placeholder.svg') }}" alt="" id="image-preview" />
-
-                                <!-- <div class="small font-italic text-muted mb-2">Formato JPG o PNG no mayor a 2 MB</div>
-
-                                <input class="form-control @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();"> -->
 
                                 @error('photo')
                                 <div class="invalid-feedback">
@@ -47,9 +36,9 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title">
+                                <h2 class="card-title">
                                     {{ __('Información del cliente') }}
-                                </h3>
+                                </h2>
 
                                 <div class="row row-cards">
                                     <div class="col-md-12">

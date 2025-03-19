@@ -6,14 +6,10 @@
         <div class="page-header-content pt-4">
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto mt-4">
-                    <h1 class="page-header-title">
-                        <div class="page-header-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                        Reporte de compras
-                    </h1>
                 </div>
             </div>
 
-            @include('partials._breadcrumbs')
+            
         </div>
     </div>
 </header>

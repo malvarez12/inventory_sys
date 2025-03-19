@@ -5,13 +5,10 @@
     <div class="container-xl">
         <div class="row g-2 align-items-center mb-3">
             <div class="col">
-                <h2 class="page-title">
-                    {{ __('Agregar proveedor') }}
-                </h2>
             </div>
         </div>
 
-        @include('partials._breadcrumbs')
+        
     </div>
 </div>
 

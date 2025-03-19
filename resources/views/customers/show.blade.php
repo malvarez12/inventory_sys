@@ -5,13 +5,12 @@
         <div class="container-xl">
             <div class="row g-2 align-items-center mb-3">
                 <div class="col">
-                    <h2 class="page-title">
+                    <!-- <h2 class="page-title">
                         {{ $customer->name }}
-                    </h2>
+                    </h2> -->
                 </div>
             </div>
 
-            @include('partials._breadcrumbs', ['model' => $customer])
         </div>
     </div>
 
@@ -22,9 +21,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <!-- <h3 class="card-title">
-                                    {{ __('Foto de perfil') }}
-                                </h3> -->
+
 
                                 <img id="image-preview"
                                      class="img-account-profile mb-2"
@@ -38,9 +35,9 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">
+                                <h2 class="card-title" style="font-size: 22px; font-weight: bold;">
                                     {{ __('Información del cliente') }}
-                                </h3>
+                                </h2>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered card-table table-vcenter text-nowrap datatable">

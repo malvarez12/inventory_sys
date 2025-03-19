@@ -58,9 +58,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('/quotations', QuotationController::class);
-    Route::resource('/customers', CustomerController::class);
-    Route::resource('/suppliers', SupplierController::class);
+    // Route::resource('/quotations', QuotationController::class);
+    
     Route::resource('/categories', CategoryController::class);
     Route::resource('/units', UnitController::class);
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
@@ -68,7 +67,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('transactions/{id}/{type}', [TransactionController::class, 'show'])->name('transactions.show');
 
 
-    
+    //Route Suppliers
+    Route::resource('/suppliers', SupplierController::class);
+    Route::get('/suppliers/show/{uuid}', [SupplierController::class,'show'])->name('suppliers.show');
+
+    //Route Customers
+    Route::resource('/customers', CustomerController::class);
+    Route::get('/customers/show/{uuid}', [CustomerController::class,'show'])->name('customers.show');
 
 
     // Route Products
@@ -135,6 +140,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route::get('/quotations/{quotation}/edit', [QuotationController::class, 'edit'])->name('quotations.edit');
     Route::post('/quotations/complete/{quotation}', [QuotationController::class, 'update'])->name('quotations.update');
     Route::delete('/quotations/delete/{quotation}', [QuotationController::class, 'destroy'])->name('quotations.delete');
+
+
+
 });
 
 require __DIR__.'/auth.php';

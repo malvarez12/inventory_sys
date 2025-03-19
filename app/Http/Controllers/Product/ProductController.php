@@ -86,7 +86,7 @@ class ProductController extends Controller
         ]);
 
         // Redirecciona al índice de productos con un mensaje de éxito.
-        return to_route('products.index')->with('error', 'Valor inválido de stock');
+        return to_route('products.index')->with('sucess', 'Producto agregado correctamente');
     }
 
     public function show($uuid)
