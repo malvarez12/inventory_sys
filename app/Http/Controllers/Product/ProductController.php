@@ -46,6 +46,7 @@ class ProductController extends Controller
         return view('products.create', [
             'categories' => $categories,
             'units' => $units,
+            
         ]);
     }
 
@@ -86,7 +87,7 @@ class ProductController extends Controller
         ]);
 
         // Redirecciona al índice de productos con un mensaje de éxito.
-        return to_route('products.index')->with('sucess', 'Producto agregado correctamente');
+        return to_route('products.index')->with('success', 'Producto agregado correctamente');
     }
 
     public function show($uuid)
@@ -155,6 +156,9 @@ class ProductController extends Controller
             ->route('products.index')
             ->with('success', 'Producto actualizado');
     }
+
+    
+
 
     public function destroy($uuid)
     {

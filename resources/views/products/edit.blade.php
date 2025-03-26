@@ -1,4 +1,15 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 @extends('layouts.tabler')
+
 
 @section('content')
     <div class="page-header d-print-none">
@@ -192,15 +203,15 @@
 
                                         <div class="col-sm-6 col-md-6">
                                             <div class="mb-3">
-                                                <!-- <label for="quantity_alert" class="form-label">
+                                                <label for="quantity_alert" class="form-label">
                                                     {{ __('Alerta de cantidad de stock') }}
                                                     <span class="text-danger">*</span>
-                                                </label> -->
+                                                </label>
 
-                                                <!-- <input type="number" id="quantity_alert" name="quantity_alert"
+                                                <input type="number" id="quantity_alert" name="quantity_alert"
                                                     class="form-control @error('quantity_alert') is-invalid @enderror"
                                                     min="0" placeholder="0"
-                                                    value="{{ old('quantity_alert', $product->quantity_alert) }}"> -->
+                                                    value="{{ old('quantity_alert', $product->quantity_alert) }}">
 
                                                 @error('quantity_alert')
                                                     <div class="invalid-feedback">

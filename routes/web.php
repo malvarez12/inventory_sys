@@ -21,16 +21,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('php/', function () {
     return phpinfo();
@@ -80,6 +71,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('products/import/', [ProductImportController::class, 'create'])->name('products.import.view');
     Route::post('products/import/', [ProductImportController::class, 'store'])->name('products.import.store');
     Route::get('products/export/', [ProductExportController::class, 'create'])->name('products.export.store');
+    Route::put('/products/{uuid}', [ProductController::class, 'update'])->name('products.update');
     Route::resource('/products', ProductController::class);
 
     // Route POS
