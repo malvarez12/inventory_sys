@@ -1,9 +1,9 @@
 <div class="card">
     <div class="card-header">
         <div>
-            <h2 class="card-title" >
-                {{ __('Productosss') }}
-            </h2>
+            <h3 class="card-title" style="font-size: 22px; font-weight: bold;">
+                {{ __('Productos') }}
+            </h3>
         </div>
 
         <div class="card-actions btn-group">
@@ -117,7 +117,6 @@
                             <x-button.edit class="btn-icon" route="{{ route('products.edit', $product->uuid) }}" />
                             <x-button.delete class="btn-icon" route="{{ route('products.destroy', $product->uuid) }}" 
                             onclick="return confirm('Estás seguro de eliminar {{ $product->name }}?')" />
-
                         </td>
                     </tr>
                 @empty
