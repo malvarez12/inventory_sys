@@ -61,40 +61,64 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @forelse ($transactions as $transaction)
-                    <tr class="hover:bg-gray-100 fs-2">
-                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
-                            {{ $loop->iteration }}
-                        </td>
-                        
-                    <td class="align-middle text-center">
-                        <span class="badge text-white text-uppercase {{ $transaction->type === 'Venta' ? 'bg-success' : 'bg-info' }}">
-                            {{ $transaction->type }}
-                        </span>
-                        </td>
-                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
-                            {{ \Carbon\Carbon::parse($transaction->date)->format('d-m-Y') }}
-                        </td>
-                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
-                            QTZ {{ number_format($transaction->total, 2) }}
-                        </td>
-                        <td class="px-5 py-2 text-sm text-gray-500 text-center">
-                            <a href="{{ route('transactions.show', ['id' => $transaction->id, 'type' => $transaction->type]) }}"
-                               class="btn btn-icon btn-outline-info">
-                                {!! file_get_contents(public_path('assets/svg/eye.svg')) !!}
-                            </a>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5" class="px-5 py-2 text-sm text-gray-500 text-center">
-                            No se encontraron transacciones
-                        </td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
+    @forelse ($transactions as $transaction)
+        {{-- Fila principal de la transacción --}}
+        <tr class="hover:bg-gray-100 fs-2">
+            <td class="px-5 py-2 text-sm text-gray-500 text-center">
+                {{ $loop->iteration }}
+            </td>
+            <td class="align-middle text-center">
+                <span class="badge text-white text-uppercase {{ $transaction->type === 'Venta' ? 'bg-success' : 'bg-info' }}">
+                    {{ $transaction->type }}
+                </span>
+            </td>
+            <td class="px-5 py-2 text-sm text-gray-500 text-center">
+                {{ \Carbon\Carbon::parse($transaction->date)->format('d-m-Y') }}
+            </td>
+            <td class="px-5 py-2 text-sm text-gray-500 text-center">
+                QTZ {{ number_format($transaction->total, 2) }}
+            </td>
+            <td class="px-5 py-2 text-sm text-gray-500 text-center">
+                <a href="{{ route('transactions.show', ['id' => $transaction->id, 'type' => $transaction->type]) }}"
+                   class="btn btn-icon btn-outline-info">
+                    {!! file_get_contents(public_path('assets/svg/eye.svg')) !!}
+                </a>
+            </td>
+        </tr>
+
+        @if(isset($transaction->details) && $transaction->details->isNotEmpty())
+    @foreach($transaction->details as $detail)
+        <tr class="bg-gray-50 text-sm">
+            <td></td> {{-- vacía para no repetir número --}}
+            <td colspan="2" class="text-left pl-10">
+    [#{{ $transaction->id }}] Producto: <strong>{{ $detail->product->name }}</strong> ({{ $detail->product->code }})
+</td>
+
+            <td class="text-center">
+                @if($transaction->type === 'Compra')
+                    Entrada: {{ $detail->quantity }}
+                @else
+                    Salida: {{ $detail->quantity }}
+                @endif
+            </td>
+            <td class="text-center">
+                Stock: {{ $detail->product->stock }}
+            </td>
+        </tr>
+    @endforeach
+@endif
+
+
+    @empty
+        <tr>
+            <td colspan="5" class="px-5 py-2 text-sm text-gray-500 text-center">
+                No se encontraron transacciones
+            </td>
+        </tr>
+    @endforelse
+</tbody>
+
+
 
     <div class="card-footer flex items-center justify-between px-4 py-3">
         <p class="text-sm text-gray-500">

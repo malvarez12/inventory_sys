@@ -54,11 +54,15 @@ class Purchase extends Model
     }
 
     // Relación de uno a muchos: Una compra tiene muchos detalles de compra
-    public function details(): HasMany
-    {
-        return $this->hasMany(PurchaseDetails::class);
-    }
+    // public function details(): HasMany
+    // {
+    //     return $this->hasMany(PurchaseDetails::class);
+    // }
 
+    public function details()
+{
+    return $this->hasMany(PurchaseDetails::class, 'purchase_id');
+}
 
     // Condición de búsqueda a la consulta actual con el 'purchase_no'
     // o con'status', con like.

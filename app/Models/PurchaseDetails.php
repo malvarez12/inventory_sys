@@ -26,15 +26,20 @@ class PurchaseDetails extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 
+    
     // Relación 'product' se cargará automáticamente cuando se consulte el modelo PurchaseDetails
     protected $with = ['product'];
 
     // Define una relación 'belongsTo', indicando que cada detalle de compra pertenece a un producto
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
+    // public function product(): BelongsTo
+    // {
+    //     return $this->belongsTo(Product::class);
+    // }
 
     // Define una relación 'belongsTo', indicando que cada detalle de compra pertenece a una compra
     public function purchase(): BelongsTo

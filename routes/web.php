@@ -53,9 +53,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::resource('/categories', CategoryController::class);
     Route::resource('/units', UnitController::class);
-    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    
+    Route::get('/transactions', [TransactionController::class, 'kardexTabla'])->name('transactions.index');
+    // Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+
+
     // Route::get('/transactions/{id}/{type}', [TransactionController::class, 'show'])->name('transactions.show');
     Route::get('transactions/{id}/{type}', [TransactionController::class, 'show'])->name('transactions.show');
+    Route::get('/kardex/detalle', [App\Http\Controllers\TransactionController::class, 'kardexDetalle'])->name('kardex.detalle');
+    Route::get('/kardex/tabla', [TransactionController::class, 'kardexTabla'])->name('kardex.tabla');
+    Route::get('/export-kardex', [TransactionController::class, 'exportKardex'])->name('kardex.export');
+
+ 
+
+
 
 
     //Route Suppliers
@@ -79,9 +90,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/pos/cart/add', [PosController::class, 'addCartItem'])->name('pos.addCartItem');
     Route::post('/pos/cart/update/{rowId}', [PosController::class, 'updateCartItem'])->name('pos.updateCartItem');
     Route::delete('/pos/cart/delete/{rowId}', [PosController::class, 'deleteCartItem'])->name('pos.deleteCartItem');
+    
 
     //Route::post('/pos/invoice', [PosController::class, 'createInvoice'])->name('pos.createInvoice');
-    Route::post('invoice/create/', [InvoiceController::class, 'create'])->name('invoice.create');
+    Route::get('/invoice/create', [InvoiceController::class, 'store']);
+    Route::post('invoice/create/', [InvoiceController::class, 'store'])->name('invoice.create');
+    // Route::post('invoice', [InvoiceController::class, 'store'])->name('invoice.store');
 
     // Route Orders
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
